@@ -26,8 +26,7 @@ public class Player : CreatureSystem
     {
         if(collision.gameObject.tag != "MovableSpace")
         {
-            Debug.Log("StartDamage");
-            Damage(collision.gameObject, _playerHp);
+            Damage(collision.gameObject, _playerHp,"EnemyBullet");
         }
     }
     private void Move()

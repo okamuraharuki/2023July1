@@ -10,12 +10,16 @@ public class CreatureSystem : MonoBehaviour
     //    Rb = GetComponent<Rigidbody2D>();
     //    _hp = Hp;
     //}
-    public void Damage(GameObject collisionGameObject,float Hp)
+    public void Damage(GameObject collisionGameObject,float Hp,string tag)
     {
-        Hp -= collisionGameObject.GetComponent<Status>()._damage;
-        Debug.Log("FinishDamage.damage quantity is " + collisionGameObject.GetComponent<Status>()._damage + "Now HP is " + Hp);
-        //Todo　ここにHpの値をfloat　Hpの参考元に返すプログラムを書く
-        //      もしくはそれに準ずる動きにする
+        if (collisionGameObject.tag == tag)
+        {
+            Debug.Log("StartDamage");
+            Hp -= collisionGameObject.GetComponent<Status>()._damage;//弾を数種類作る予定
+            Debug.Log("FinishDamage.damage quantity is " + collisionGameObject.GetComponent<Status>()._damage + "Now HP is " + Hp);
+            //Todo　ここにHpの値をfloat　Hpの参考元に返すプログラムを書く
+            //      もしくはそれに準ずる動きにする
+        }
     }
     public void Dead(float Hp)
     {
