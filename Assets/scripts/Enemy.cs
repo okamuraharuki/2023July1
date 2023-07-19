@@ -14,7 +14,8 @@ public class Enemy : CreatureSystem
     {
         if (collision.gameObject.tag != "MovableSpace")
         {
-            Damage(collision.gameObject, _enemyHp,"PlayerBullet");
+            _enemyHp = Damage(collision.gameObject, _enemyHp,"PlayerBullet");
+            Debug.Log("nowHp=" + _enemyHp);
         }
     }
 }
