@@ -6,15 +6,15 @@ TagManager:
   tags:
   - EnemyBullet
   - PlayerBullet
-  - MovableSpace
+  - PlayScreen
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - PlayerLimit
   - 
   - 
   - 

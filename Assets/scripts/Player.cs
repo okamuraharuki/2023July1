@@ -24,11 +24,8 @@ public class Player : CreatureSystem
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag != "MovableSpace")
-        {
-            _playerHp = Damage(collision.gameObject, _playerHp,"EnemyBullet");
-            Debug.Log("nowHp=" + _playerHp);
-        }
+        _playerHp = Damage(collision.gameObject, _playerHp,"EnemyBullet");
+        Debug.Log("nowHp=" + _playerHp);
     }
     private void Move()
     {
@@ -37,11 +34,11 @@ public class Player : CreatureSystem
         Vector2 playerdir = new Vector2(hori, vert);
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            _rb.velocity = playerdir * _slowMove;
+            _rb.velocity = playerdir.normalized * _slowMove;
         }
         else
         {
-            _rb.velocity = playerdir * _normalMove;
+            _rb.velocity = playerdir.normalized * _normalMove;
         }
     }
 }

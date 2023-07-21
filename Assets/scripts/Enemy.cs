@@ -12,10 +12,7 @@ public class Enemy : CreatureSystem
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag != "MovableSpace")
-        {
-            _enemyHp = Damage(collision.gameObject, _enemyHp,"PlayerBullet");
-            Debug.Log("nowHp=" + _enemyHp);
-        }
+        _enemyHp = Damage(collision.gameObject, _enemyHp,"PlayerBullet");
+        Debug.Log("nowHp=" + _enemyHp);
     }
 }
