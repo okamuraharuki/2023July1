@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Player : CreatureSystem
 {
-    [SerializeField] float _normalMove = 5;
+    [SerializeField] static float _normalMove = 5;
     [SerializeField] float _slowMove = 3;
     [SerializeField] float _playerHp = 3;
     Rigidbody2D _rb;
