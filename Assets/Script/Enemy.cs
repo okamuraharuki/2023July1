@@ -13,6 +13,6 @@ public class Enemy : CreatureSystem
     private void OnTriggerEnter2D(Collider2D collision)
     {
         _enemyHp = Damage(collision.gameObject, _enemyHp,"PlayerBullet");
-        Debug.Log("nowHp=" + _enemyHp);
+        //Debug.Log("nowHp=" + _enemyHp);
     }
 }

@@ -14,7 +14,7 @@ public class CreatureSystem : MonoBehaviour
     {
         if (collisionGameObject.tag == tag)
         {
-            Debug.Log("StartDamage");
+            //Debug.Log("StartDamage");
             Hp -= collisionGameObject.GetComponent<Status>()._damage;//’e‚ğ”í—Şì‚é—\’è
         }
         return Hp;

@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class Player : CreatureSystem
 {
     [SerializeField] static float _normalMove = 5;
     [SerializeField] float _slowMove = 3;
     [SerializeField] float _playerHp = 3;
+    bool _hitted = false;
     Rigidbody2D _rb;
     Animator _anim;
     private void Start()
@@ -17,6 +19,10 @@ public class Player : CreatureSystem
     void Update()
     {
         Dead(_playerHp);
+        if (_hitted)
+        {
+            Hit();
+        }
     }
     private void FixedUpdate()
     {
@@ -24,8 +30,18 @@ public class Player : CreatureSystem
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _playerHp = Damage(collision.gameObject, _playerHp,"EnemyBullet");
-        Debug.Log("nowHp=" + _playerHp);
+        if (_hitted == false)
+        {
+            _playerHp = Damage(collision.gameObject, _playerHp, "EnemyBullet");
+            _hitted = true;
+            //Debug.Log("nowHp=" + _playerHp);}
+        }
+    }
+    IEnumerator Hit() 
+    { 
+        yield return new WaitForSeconds(2);
+        this.gameObject.GetComponent<Sprite>().Image.color.a = 
+        _hitted = false;
     }
     private void Move()
     {
@@ -41,4 +57,5 @@ public class Player : CreatureSystem
             _rb.velocity = playerdir.normalized * _normalMove;
         }
     }
+
 }
