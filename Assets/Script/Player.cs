@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class Player : CreatureSystem
@@ -7,7 +8,7 @@ public class Player : CreatureSystem
     [SerializeField] static float _normalMove = 5;
     [SerializeField] float _slowMove = 3;
     [SerializeField] float _playerHp = 3;
-    bool _hitted = false;
+    [SerializeField] bool _hit = false;
     Rigidbody2D _rb;
     Animator _anim;
     private void Start()
@@ -19,29 +20,33 @@ public class Player : CreatureSystem
     void Update()
     {
         Dead(_playerHp);
-        if (_hitted)
-        {
-            Hit();
-        }
+        Hit();
     }
     private void FixedUpdate()
     {
         Move();
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (_hitted == false)
+        if (_hit == false)
         {
             _playerHp = Damage(collision.gameObject, _playerHp, "EnemyBullet");
-            _hitted = true;
-            //Debug.Log("nowHp=" + _playerHp);}
+            _hit = true;
+            Debug.Log("nowHp=" + _playerHp);
         }
     }
-    IEnumerator Hit() 
-    { 
+    private void Hit()
+    {
+        if (_hit)
+        {
+            StartCoroutine(IHit());
+        }
+    }
+    IEnumerator IHit()
+    {
+        //this.gameObject.GetComponent<Sprite>().Image.color.a = 
         yield return new WaitForSeconds(2);
-        this.gameObject.GetComponent<Sprite>().Image.color.a = 
-        _hitted = false;
+        _hit = false;
     }
     private void Move()
     {

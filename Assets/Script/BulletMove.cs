@@ -8,9 +8,6 @@ public class BulletMove : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-    }
-    void Update()
-    {
-        _rb.transform.rotation = Quaternion.identity;
+        _rb.velocity = new Vector3(0,-1,0);
     }
 }

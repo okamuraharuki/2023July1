@@ -6,7 +6,7 @@ public class Enemy : CreatureSystem
 {
     [SerializeField] float _enemyHp = 12;
     // Start is called before the first frame update
-    void Update()
+    private void Update()
     {
         Dead(_enemyHp);
     }
