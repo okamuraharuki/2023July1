@@ -13,7 +13,6 @@ public class Player : CreatureSystem
     Animator _anim;
     private void Start()
     {
-        //CreatureDefine(_playerHp,_rb,_anim);
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
     }
