@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Status : MonoBehaviour
 {
-    [SerializeField]public float _damage = 1;
+    [SerializeField]public float _damage = 100;
 }

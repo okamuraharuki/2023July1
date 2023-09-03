@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : CreatureSystem
 {
-    [SerializeField] float _enemyHp = 12;
+    [SerializeField] public float _enemyHp = 12;
     // Start is called before the first frame update
     private void Update()
     {
@@ -12,7 +12,11 @@ public class Enemy : CreatureSystem
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        _enemyHp = Damage(collision.gameObject, _enemyHp,"PlayerBullet");
-        //Debug.Log("nowHp=" + _enemyHp);
+        DamagedHp(collision.gameObject);
+    }
+    public void DamagedHp(GameObject collision)
+    {
+        _enemyHp = Damage(collision, _enemyHp, "PlayerBullet");
+        Debug.Log("nowHp=" + _enemyHp);
     }
 }

@@ -12,7 +12,7 @@ public class CreatureSystem : MonoBehaviour
     //}
     public float Damage(GameObject collisionGameObject,float Hp,string tag)
     {
-        if (collisionGameObject.tag == tag)
+        if (collisionGameObject.tag == tag || tag == "Bomb")
         {
             //Debug.Log("StartDamage");
             Hp -= collisionGameObject.GetComponent<Status>()._damage;//’e‚ğ”í—Şì‚é—\’è
